@@ -1,57 +1,73 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function GlowCursor() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
-  const [isVisible, setIsVisible] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Only enable on pointer-fine devices (mouse/trackpad, not touch)
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
+    const el = cursorRef.current;
+    if (!el) return;
+
     let targetX = -100;
     let targetY = -100;
     let currentX = -100;
     let currentY = -100;
+    let isRunning = false;
     let animationFrameId: number;
+
+    const animate = () => {
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+
+      currentX += dx * 0.15;
+      currentY += dy * 0.15;
+
+      el.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+
+      // Continue animating until settled
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        isRunning = false;
+      }
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
       targetX = e.clientX;
       targetY = e.clientY;
-      if (!isVisible) setIsVisible(true);
+      el.style.opacity = "1";
+      if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(animate);
+      }
     };
 
     const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    const animate = () => {
-      // Smooth interpolation
-      currentX += (targetX - currentX) * 0.15;
-      currentY += (targetY - currentY) * 0.15;
-      setPosition({ x: currentX, y: currentY });
-      animationFrameId = requestAnimationFrame(animate);
+      el.style.opacity = "0";
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave);
-    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isVisible]);
-
-  if (!isVisible) return null;
+  }, []);
 
   return (
     <div
+      ref={cursorRef}
       className="glow-cursor"
       style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
+        opacity: 0,
+        transform: "translate3d(-100px, -100px, 0) translate(-50%, -50%)",
+        transition: "opacity 0.2s ease",
       }}
       aria-hidden="true"
     />

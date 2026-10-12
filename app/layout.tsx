@@ -6,12 +6,12 @@ import "./styles/animations.css";
 import Analytics from "./components/Analytics";
 import ScrollReveal from "./components/ScrollReveal";
 import GlowCursor from "./components/reactbits/GlowCursor";
-import LoadingScreen from "./components/LoadingScreen";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -46,9 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es-AR">
+    <html lang="es-AR" className={jakarta.variable}>
       <body className={jakarta.className}>
-        <LoadingScreen />
         <GlowCursor />
         <Analytics>
           {children}

@@ -25,15 +25,7 @@
   }
 }
 
-/* WhatsApp glow: subtle pulse on floating button */
-@keyframes waPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-  }
-}
+/* WhatsApp pulse keyframe is defined in components.css on pseudo-element */
 
 /* Badge shimmer: subtle shimmer for the early bird badge */
 @keyframes badgeShimmer {

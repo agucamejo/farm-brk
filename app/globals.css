@@ -4,8 +4,6 @@
    Dark Luxury Wine Palette (1:1 Claude Design)
    ═══════════════════════════════════════════ */
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
-
 /* ── Tokens ── */
 :root {
   --bg: #0d0709;
@@ -45,7 +43,7 @@ html {
 body {
   background: var(--bg);
   color: var(--tx);
-  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   line-height: 1.55;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
