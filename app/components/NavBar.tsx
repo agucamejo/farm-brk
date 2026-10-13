@@ -41,7 +41,7 @@ export default function NavBar() {
             </button>
             <a
               href="#unite"
-              className="navbar-btn-sumarme"
+              className="btn sm"
               onClick={() => handleNav("CTA_header")}
             >
               {navbar.cta}
