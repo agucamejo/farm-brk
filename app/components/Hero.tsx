@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import SignupForm from "./SignupForm";
 import RotatingText from "./reactbits/RotatingText";
 import BlurText from "./reactbits/BlurText";
@@ -22,7 +23,8 @@ export default function Hero() {
               text={hero.title}
               as="h1"
               className="hero__title"
-              delay={0.06}
+              delay={0.04}
+              animateOnMount={true}
             />
 
             <p className="hero__lead">{hero.lead}</p>
@@ -50,11 +52,14 @@ export default function Hero() {
           <div className="hero__mockup-col">
             <div className="hero__glow" aria-hidden="true" />
             <div className="hero__phone-render">
-              <img
+              <Image
                 src="/mockups/hero-phone-clean.png"
                 alt={hero.mockupAlt}
+                width={335}
+                height={650}
+                priority
                 className="hero__phone-img"
-                loading="eager"
+                sizes="(max-width: 640px) 280px, 320px"
               />
             </div>
           </div>

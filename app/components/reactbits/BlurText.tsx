@@ -29,15 +29,15 @@ export default function BlurText({
           <motion.span
             key={`${word}-${i}`}
             variants={{
-              hidden: { filter: "blur(8px)", opacity: 0, y: 12 },
-              visible: { filter: "blur(0px)", opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 14 },
+              visible: { opacity: 1, y: 0 },
             }}
             transition={{
               duration: 0.45,
               delay: mountDelay + i * delay,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            style={{ display: "inline-block", marginRight: "0.25em" }}
+            style={{ display: "inline-block", marginRight: "0.25em", willChange: "transform, opacity" }}
           >
             {word}
           </motion.span>
@@ -57,15 +57,15 @@ export default function BlurText({
         <motion.span
           key={`${word}-${i}`}
           variants={{
-            hidden: { filter: "blur(8px)", opacity: 0, y: 12 },
-            visible: { filter: "blur(0px)", opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 14 },
+            visible: { opacity: 1, y: 0 },
           }}
           transition={{
             duration: 0.45,
             delay: i * delay,
             ease: [0.25, 0.1, 0.25, 1],
           }}
-          style={{ display: "inline-block", marginRight: "0.25em" }}
+          style={{ display: "inline-block", marginRight: "0.25em", willChange: "transform, opacity" }}
         >
           {word}
         </motion.span>
