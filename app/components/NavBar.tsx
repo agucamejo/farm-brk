@@ -20,7 +20,7 @@ export default function NavBar() {
         <div className="navbar-top-row">
           <a href="#" className="navbar-logo" onClick={() => handleNav("logo")}>
             <img
-              src="/icon-192.png"
+              src="/icon-192.webp"
               alt="Logo FARM"
               className="navbar-logo__icon"
               width={24}
