@@ -661,7 +661,7 @@
   position: absolute;
   top: -11px;
   right: 20px;
-  background: var(--br);
+  background: #AE1421;
   color: #ffffff;
   font-size: 0.68rem;
   font-weight: 800;
@@ -672,7 +672,7 @@
 .plans__card-eyebrow {
   font-size: 0.75rem;
   font-weight: 800;
-  color: var(--br);
+  color: #E08A92;
   letter-spacing: 0.08em;
   margin-bottom: 4px;
 }
@@ -711,7 +711,7 @@
 .plans__savings-tag {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--br);
+  color: #E08A92;
   margin-bottom: 14px;
 }
 
@@ -1198,7 +1198,7 @@
    Vibrant red full-width banner
    ──────────────────────── */
 .cta-band {
-  background: var(--br);
+  background: #AE1421;
   color: #ffffff;
   padding: 64px 0;
   text-align: center;
@@ -1213,6 +1213,7 @@
 .cta-band__content p {
   color: rgba(255, 255, 255, 0.88);
   font-size: 1rem;
+  font-weight: 500;
   max-width: 460px;
   margin: 0 auto 24px;
 }

@@ -7,11 +7,13 @@ import { useTracking } from "@/lib/tracking";
 interface SignupFormProps {
   source: string;
   buttonText?: string;
+  ctaText?: boolean;
 }
 
 export default function SignupForm({
   source,
   buttonText = "Quiero sumarme",
+  ctaText = true,
 }: SignupFormProps) {
   const [ig, setIg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -84,9 +86,11 @@ export default function SignupForm({
           {error}
         </p>
       )}
-      <p className="form-note">
-        Dejanos tu Instagram y te escribimos cuando abra el portal.
-      </p>
+      {ctaText && (
+        <p className="form-note">
+          Dejanos tu Instagram y te escribimos cuando abra el portal.
+        </p>
+      )}
     </form>
   );
 }
